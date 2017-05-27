@@ -1,24 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { Container } from '../Scaffolding/Scaffolding.js';
 import styled from 'styled-components';
 
-const NavItem = props => (
-  <li>
-    <Link to={props.link}>{props.text}</Link>
-  </li>
+const NavItem = ({ label, to, activeOnlyWhenExact }) => (
+  <Route
+    path={to}
+    exact={activeOnlyWhenExact}
+    children={({ match }) => (
+      <li className={match ? 'active' : ''}>
+        <Link to={to}>{label}</Link>
+      </li>
+    )}
+  />
 );
 
-const NavList = props => (
+const NavList = () => (
   <ul className="nav-list">
-    {props.navItems.map((item, key) => <NavItem key={key} {...item} />)}
+    <NavItem to="/" label="Home" />
+    <NavItem to="/work" label="Work" />
+    <NavItem to="/about" label="About" />
+    <li>
+      <a href="https://github.com/leggomuhgreggo/">Github</a>
+    </li>
   </ul>
 );
 
-const Nav_ = ({ navItems, ...rest }) => (
-  <nav {...rest}>
+const Nav_ = ({ ...props }) => (
+  <nav {...props}>
     <Container type="fluid">
-      <NavList navItems={navItems} />
+      <NavList />
     </Container>
   </nav>
 );

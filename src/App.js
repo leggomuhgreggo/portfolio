@@ -9,25 +9,6 @@ import Home from './components/Home/Home.js';
 import About from './components/About/About.js';
 import Work from './components/Work/Work.js';
 
-const NAV_CONFIG = [
-  {
-    link: '/',
-    text: 'Home'
-  },
-  {
-    link: '/about',
-    text: 'About'
-  },
-  {
-    link: '/work',
-    text: 'Work'
-  },
-  {
-    link: '/github',
-    text: 'Github'
-  }
-];
-
 const Main = styled.main`
   width: 100%;
   height: 100%;
@@ -43,7 +24,7 @@ class App extends Component {
         <Route
           render={({ location }) => (
             <SiteWrap>
-              <Nav navItems={NAV_CONFIG} />
+              <Nav />
 
               <CSSTransitionGroup
                 component={Main}

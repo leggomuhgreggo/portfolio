@@ -38,7 +38,7 @@ const WORK_CONFIG = [
   {
     title: 'Slick Carousel',
     link: 'https://github.com/kenwheeler/slick',
-    summary: `Slider repo created by the excellent Ken Wheeler, for which I am a maintainer`,
+    summary: `Slider repo created by the excellent Ken Wheeler that I've been a primary maintainer of for the past 2 years`,
     img: '',
     tags: []
   },
@@ -92,7 +92,7 @@ const Title = styled.h2`
 const WorkItem_ = ({ className, ...props }) => (
   <li className={className}>
     <Title>
-      <FancyLink href={props.link}>
+      <FancyLink target="_blank" href={props.link}>
         {props.title}
       </FancyLink>
     </Title>
