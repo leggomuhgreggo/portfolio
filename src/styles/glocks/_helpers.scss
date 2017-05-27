@@ -1,0 +1,40 @@
+@function remove($list, $value, $recursive: false) {
+  $result: ();
+
+  @for $i from 1 through length($list) {
+    @if type-of(nth($list, $i)) == list and $recursive {
+      $result: append($result, remove(nth($list, $i), $value, $recursive));
+    }
+
+    @else if nth($list, $i) != $value {
+      $result: append($result, nth($list, $i));
+    }
+  }
+
+  @return $result;
+}
+
+@function list-sort($list) {
+  $sortedlist: ();
+  @while length($list) > 0 {
+    $value: nth($list, 1);
+    @each $item in $list {
+      @if $item < $value {
+        $value: $item;
+      }
+    }
+    $sortedlist: append($sortedlist, $value, 'space');
+    $list: remove($list, $value);
+  }
+  @return $sortedlist;
+}
+
+@function map-sort($map) {
+  $new-map: ();
+  $map-keys: map-keys($map);
+  $sorted-key-list: list-sort($map-keys);
+  @each $key in $sorted-key-list {
+    $new-map: map-merge($new-map, ($key: map-get($map, $key)));
+  }
+  @return $new-map;
+}

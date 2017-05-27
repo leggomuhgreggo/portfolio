@@ -1,0 +1,18 @@
+/* To Do:
+// test with non-standard units
+// white-list props
+// line-height hooo boy
+// check prop consistency
+// allow for inconsistencies in shorthand vs longhand
+// reduce globals
+// improve commenting and errors/warning
+// config loop
+*/
+:root {
+  font-size: 106.25%; }
+  @media (min-width: 300px) {
+    :root {
+      font-size: calc(0.00667 * 100vw + 93.75%); } }
+  @media (min-width: 900px) {
+    :root {
+      font-size: 131.25%; } }

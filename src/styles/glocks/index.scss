@@ -1,0 +1,314 @@
+/* To Do:
+// test with non-standard units
+// white-list props
+// line-height hooo boy
+// check prop consistency
+// allow for inconsistencies in shorthand vs longhand
+// reduce globals
+// improve commenting and errors/warning
+// config loop
+*/
+
+
+@import 'helpers'; //general
+@import 'normalize-spec';
+@import 'linear-function-helpers';
+@import 'get-calcs';
+
+
+
+// Global vars
+$css-lock-options:(
+  root-lock-width-min: 300px,
+  root-lock-width-max: 900px,
+  root-font-size-min: 17px,
+  root-font-size-max: 21px
+) !default;
+
+
+@function same-type($list){
+  $prev: null;
+
+  @each $item in $list{
+
+    @if type-of($prev) != 'null' {
+      @if type-of($prev) != type-of($item){
+        @return false
+      }
+      @if type-of(prev) == 'number' and unit($prev) != unit($item) {
+        @return false
+      }
+    }
+
+    $prev: $item;
+  }
+
+  @return $prev;
+}
+
+@function interpolate-global-breakpoints($map){
+  // destructure
+  $spec: map-get($map, spec);
+  $new-breakpoint: map-get($map, new-breakpoint);
+  $prev-breakpoint: map-get($map, prev-breakpoint);
+  $next-breakpoint: map-get($map, next-breakpoint);
+  $insertion-index: map-get($map, insertion-index);
+
+  $prev-breakpoint-rules: map-get($spec, $prev-breakpoint);
+  $next-breakpoint-rules: map-get($spec, $next-breakpoint);
+
+  $new-breakpoint-map: ();
+
+  $rule-count: 1;
+  @each $rule in $prev-breakpoint-rules{
+    $vals-str: null;
+
+    $rule-property: nth($rule, 1);
+    $rule-value: nth($rule, 2);
+
+    $eqiv-next-rule: nth($next-breakpoint-rules, $rule-count);
+    $eqiv-next-rule-property: nth($eqiv-next-rule, 1);
+    $eqiv-next-rule-value: nth($eqiv-next-rule, 2);
+
+    $number-count: 1;
+    @each $number in $rule-value{
+
+      $eqiv-next-number: nth($eqiv-next-rule-value, $number-count);
+
+      $slope: get-slope((
+        x1: $prev-breakpoint,
+        y1: $number,
+        x2: $next-breakpoint,
+        y2: $eqiv-next-number
+      ));
+
+      $intercept: get-intercept((
+        y: $number,
+        m: $slope,
+        x: $prev-breakpoint
+      ));
+
+      $new-number: get-y((
+        m: $slope,
+        x: $new-breakpoint,
+        b: $intercept
+      ));
+
+      $new-number: round($new-number);
+
+      @if($number-count == 1){
+        $vals-str: $new-number;
+      }@else{
+        $vals-str: join($vals-str, $new-number, space);
+      }
+
+      $number-count: $number-count + 1;
+    };
+
+    $new-rule: join($rule-property, $vals-str, space);
+
+    $new-breakpoint-map: map-merge($new-breakpoint-map, ($rule-property: $vals-str));
+    $rule-count: $rule-count + 1;
+  };
+
+  $new-spec: map-merge($spec, ($new-breakpoint: $new-breakpoint-map));
+  $new-spec: map-sort($new-spec);
+
+  @return $new-spec;
+}
+
+@function check-global-breakpoints($map){
+
+  $breakpoint-list: map-keys($map);
+  $root-breakpoints: $root-lock-width-min, $root-lock-width-max;
+  $new-map: $map;
+
+  $root-breakpoint-additions: null;
+  @each $root-breakpoint in $root-breakpoints{
+
+    @if( map-has-key($map, $root-breakpoint) == false ){
+
+      $new-breakpoint-list: append($breakpoint-list, $root-breakpoint);
+      $new-breakpoint-list: list-sort($new-breakpoint-list);
+      $insertion-index: index($new-breakpoint-list, $root-breakpoint);
+
+      // checks to make sure the root breakpoint isn't a bookend, in
+      // which case no interpolation necessary
+      @if($insertion-index != 1 and $insertion-index != length($new-breakpoint-list)){
+
+        $new-map: interpolate-global-breakpoints((
+          insertion-index: $insertion-index,
+          spec: $map,
+          new-breakpoint: $root-breakpoint,
+          prev-breakpoint: nth($new-breakpoint-list, $insertion-index - 1),
+          next-breakpoint: nth($new-breakpoint-list, $insertion-index + 1)
+        ));
+
+        // RECURSION cuz what if both are missing?
+        $new-map: check-global-breakpoints($new-map)
+      }
+
+    };
+  }
+
+  // @return $new-map;
+  @return $new-map;
+}
+
+@function clean-lock-args($lock-arg){
+
+  $breakpoints-map: normalize-spec($lock-arg);
+  $breakpoints-map: map-sort($breakpoints-map);
+  $breakpoints-map: check-global-breakpoints($breakpoints-map);
+
+  @return $breakpoints-map;
+}
+
+@mixin loop-rules($map){
+
+  // destructure $map
+  $rules: map-get($map, rules);
+  $breakpoint: map-get($map, breakpoint);
+  $callback: map-get($map, callback);
+
+  @each $rule in $rules{
+
+    $vals-str: '';
+    $rule-property: nth($rule, 1);
+    $rule-value: nth($rule, 2);
+    $callback-map: ();
+
+    @each $number in $rule-value{
+
+      $calc: null;
+
+      @if($callback == 'get-responsive-calc'){
+
+        $prev-breakpoint: map-get($map, prev-breakpoint);
+        $prev-rules: map-get($map, prev-rules);
+
+        $rule-number-count: 1;
+        $prev-rule-num: nth(map-get($prev-rules, #{$rule-property}), $rule-number-count);
+
+        $callback-map: (
+          lock-width-min: $prev-breakpoint,
+          lock-width-max: $breakpoint,
+          value-min: $prev-rule-num,
+          value-max: $number,
+        );
+
+        $calc: call($callback, $callback-map);
+
+        $rule-number-count: $rule-number-count + 1;
+      }
+
+
+      @else{
+
+        $callback-map: (
+          size: $number,
+          breakpoint: $breakpoint
+        );
+
+        $calc: call($callback, $callback-map);
+      }
+
+      $vals-str: $vals-str + ' ' + $calc;
+
+    }
+
+    #{$rule-property}: #{$vals-str};
+
+  }
+}
+
+
+
+
+
+////////////////////////////////////
+// ROOT VARS AND LOCKS
+/////////////////////////
+
+// pixel equivalent to standard browsers' percentage-based root font size
+$browser-default-font-size: 16px;
+
+//destructure map
+$root-lock-width-min: map-get($css-lock-options, root-lock-width-min);
+$root-lock-width-max: map-get($css-lock-options, root-lock-width-max);
+$root-font-size-min: map-get($css-lock-options, root-font-size-min);
+$root-font-size-max: map-get($css-lock-options, root-font-size-max);
+
+$root-slope: get-slope(( x1: $root-lock-width-min, y1: $root-font-size-min, x2: $root-lock-width-max, y2: $root-font-size-max ));
+$root-intercept-pixels: get-intercept(( y: $root-font-size-min, m: $root-slope, x: $root-lock-width-min ));
+$root-intercept-percent: percentage($root-intercept-pixels / $browser-default-font-size);
+
+$root-intercept-rem: 1rem - #{$root-slope} * 100vw;
+
+// CSS Output
+:root{
+  font-size: percentage($root-font-size-min / $browser-default-font-size);
+
+  @media (min-width: #{$root-lock-width-min}) {
+      font-size: calc(#{$root-slope} * 100vw + #{$root-intercept-percent});
+  }
+
+  @media (min-width: #{$root-lock-width-max}) {
+    font-size: percentage($root-font-size-max / $browser-default-font-size);
+  }
+}
+
+
+////////////////////////////////////
+
+
+@mixin css-lock($lock-arg) {
+
+  $breakpoints-map: clean-lock-args($lock-arg);
+
+  $breakpoints-list: map-keys($breakpoints-map);
+
+  $breakpoint-length: length($breakpoints-list);
+  $first-breakpoint: nth($breakpoints-list, 1);
+  $last-breakpoint: nth($breakpoints-list, $breakpoint-length);
+
+  //////////////
+
+  $loop-map: ();
+
+  @each $breakpoint, $rules in $breakpoints-map {
+
+    $loop-map: map-merge($loop-map, (rules: $rules));
+    $loop-map: map-merge($loop-map, (breakpoint: $breakpoint));
+
+    ////// first decration, locked
+    @if($breakpoint == $first-breakpoint){
+      $loop-map: map-merge($loop-map, (callback: 'get-min-calc'));
+
+      @include loop-rules($loop-map);
+    }
+
+    ////// responsive
+    @else{
+      $loop-map: map-merge($loop-map, (callback: 'get-responsive-calc'));
+
+      @media (min-width: #{map-get($loop-map, prev-breakpoint)}) {
+        @include loop-rules($loop-map);
+      }
+    }
+
+    ////// last breakppoint, locked
+    @if($breakpoint == $last-breakpoint){
+      $loop-map: map-merge($loop-map, (callback: 'get-max-calc'));
+
+      @media (min-width: #{$breakpoint}) {
+        @include loop-rules($loop-map);
+      }
+    }
+
+    // placeholders and incriments
+    $loop-map: map-merge($loop-map, (prev-breakpoint: $breakpoint));
+    $loop-map: map-merge($loop-map, (prev-rules: $rules));
+
+  }
+}

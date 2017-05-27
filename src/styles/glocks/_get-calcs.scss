@@ -1,0 +1,51 @@
+
+
+@function get-min-calc($map){
+  $size: map-get($map, size);
+  $min-delta: $size - $root-font-size-min;
+  @return calc( 1rem + #{$min-delta} );
+}
+
+@function get-max-calc($map){
+  $size: map-get($map, size);
+  $max-delta: $size - $root-font-size-max;
+  @return calc( 1rem + #{$max-delta} );
+}
+
+@function get-responsive-calc($map){
+  
+  // destructure vars from map
+  $lock-width-min: map-get($map, lock-width-min);
+  $lock-width-max: map-get($map, lock-width-max);
+  $breakpoint: $lock-width-min;
+  $value-min: map-get($map, value-min);
+  $value-max: map-get($map, value-max);
+  $output-intercept: null;
+  
+  // To Do: check unit equality?
+  
+  $this-slope: get-slope((
+    x1: $lock-width-min,
+    y1: $value-min,
+    x2: $lock-width-max,
+    y2: $value-max
+  ));
+  
+  $this-intercept: get-intercept((
+    y: $value-min,
+    m: $this-slope,
+    x: $lock-width-min
+  ));
+  
+  // check for type of intercept  
+  @if($breakpoint < $root-lock-width-min){
+    $output-intercept: 1rem - #{$root-font-size-min - $this-intercept};
+  } @else if($breakpoint >= $root-lock-width-max){
+    $output-intercept: 1rem - #{$root-font-size-max - $this-intercept};
+  } @else{
+    $intercept-delta: ($this-intercept - $root-intercept-pixels);
+    $output-intercept: $root-intercept-rem + #{($intercept-delta)};
+  }
+  
+  @return calc( #{$this-slope} * 100vw + (#{$output-intercept}) );
+}

@@ -1,0 +1,12 @@
+@function get-slope($map){  
+  @return (map-get($map, y2) - map-get($map, y1)) / (map-get($map, x2) - map-get($map, x1));
+}
+
+@function get-intercept($map){
+  // b = y - mx
+  @return map-get($map, y) - map-get($map, m) * map-get($map, x);
+}
+
+@function get-y($map){
+  @return map-get($map, m) * map-get($map, x) + map-get($map, b);
+}

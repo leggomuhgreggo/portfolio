@@ -1,0 +1,82 @@
+@function normalize-spec($spec){
+
+  @warn type-of($spec);
+    
+  // $ARGS TYPE: Simple List e.g. $spec:  17px, 21px;
+  @if type-of($spec) == 'list' and length($spec) == 2 {
+    
+    // check unit consistency
+    @if same-type($spec) == false{ @error 'unit mismatch'; }
+    
+    // return map shape
+    @return (
+      $root-lock-width-min: (
+        font-size: $root-font-size-min
+      ),
+      $root-lock-width-max:(
+        font-size: $root-font-size-max
+      )
+    );
+  }
+  
+  // MAP $ARGS TYPES...
+  @else if type-of($spec)=='map' {
+      
+    // Check unit consistency
+    @if same-type(map-keys($spec)) == false{ @error 'unit mismatch'; }
+    
+    // Get Type of Keys
+    $type: type-of(same-type(map-keys($spec)));
+    
+    // $ARGS TYPE: Assumes default lock widths
+    // e.g. $spec:  (padding: (10px 20px, 20px 40px));
+    // $spec:  (padding: (10px 20px, 20px 40px), margin: (10px 20px, 20px 40px));
+    // To Do: check to make sure there are two values in property list 
+    @if $type == 'string' {
+        
+      $props-map-min: ();
+      $props-map-max: ();
+                  
+      @each $property, $value in $spec {
+        $props-map-min: map-merge( $props-map-min, ($property: nth($value, 1)) );
+        $props-map-max: map-merge( $props-map-max, ($property: nth($value, 2)) );
+      } 
+      
+      @return ($root-lock-width-min: $props-map-min, $root-lock-width-max: $props-map-max);      
+    }
+    
+    // $ARGS TYPES: Meida Width Keys...
+    @else if $type == 'number'{
+        
+        // Check to make sure enough lock widths
+        @if(length(map-keys($spec)) < 2){ @error 'needs minimum 2 width values' }
+        
+        // get val type
+        $type: type-of(nth(nth($spec, 1),2));
+        
+        // $ARG TYPE: custom lock widths, font-size default
+        // e.g. $spec: (576px: 24px, 768px: 24px, 992px: 34px);
+        @if($type == 'number'){
+            
+            $new-map: ();
+            
+            @each $lock-width, $val in $spec{
+                $new-map: map-merge($new-map, ($lock-width: (font-size: $val)));
+            }
+            
+            @return $new-map;
+        }
+        
+        @if($type == 'map'){
+            @return $spec;
+        }
+    }
+    
+    
+    @return 'cool';
+  }
+    
+  @else {
+      @error 'something is wrong with arguments'
+  }
+}

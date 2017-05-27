@@ -1,0 +1,50 @@
+@import './glocks/index.scss';
+
+$font-family-sans-serif: sans-serif;
+$font-family-serif: 'Times New Roman';
+
+html{background: #151617;}
+
+*{
+  box-sizing: border-box;
+  user-select: none;
+}
+
+ul,ol{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
+.fade-leave {
+  opacity: 0;display: none;
+}
+
+
+a.fancy-link{
+  background-image: linear-gradient(to bottom,rgba(255,255,255,0) 50%,rgba(255,255,255,.6) 50%);
+  background-position: 0 1.05em;
+  background-repeat: repeat-x;
+  background-size: 2px .2em;
+  color: inherit;
+  text-decoration: none;
+
+  @media only screen and (min-device-pixel-ratio: 2),
+  only screen and (-webkit-min-device-pixel-ratio:2),
+  only screen and (min-resolution:2dppx) {
+    background-image: linear-gradient(to bottom,rgba(255,255,255,.8) 25%,rgba(255,255,255,0) 25%);
+  }
+}
+
+
+h1, h2, h3, h4, h5, h6{ font-family: $font-family-serif; }
