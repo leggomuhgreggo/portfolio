@@ -21,7 +21,13 @@ const NavList = () => (
     <NavItem to="/work" label="Work" />
     <NavItem to="/about" label="About" />
     <li>
-      <a href="https://github.com/leggomuhgreggo/">Github</a>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/leggomuhgreggo/"
+      >
+        Github
+      </a>
     </li>
   </ul>
 );

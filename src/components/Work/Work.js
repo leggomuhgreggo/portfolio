@@ -10,7 +10,7 @@ const WORK_CONFIG = [
   {
     title: 'Glocks',
     link: 'https://github.com/leggomuhgreggo/glocks',
-    summary: `A CSS Locks library, written in SASS for better fluid responsivity`,
+    summary: `A CSS Locks library, written in SASS for better fluid responsivity. Curently adapting to JS so it can work with style-components`,
     img: '',
     tags: []
   },
@@ -92,12 +92,14 @@ const Title = styled.h2`
 const WorkItem_ = ({ className, ...props }) => (
   <li className={className}>
     <Title>
-      <FancyLink target="_blank" href={props.link}>
+      <FancyLink target="_blank" rel="noopener noreferrer" href={props.link}>
         {props.title}
       </FancyLink>
     </Title>
     <Summary>{props.summary}</Summary>
-    <Small href={props.link}>{props.link}</Small>
+    <Small target="_blank" rel="noopener noreferrer" href={props.link}>
+      {props.link}
+    </Small>
   </li>
 );
 
