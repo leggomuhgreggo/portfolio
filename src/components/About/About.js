@@ -1,58 +1,240 @@
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
+import validator from 'validator';
 
+import Button from '../Button/Button.js';
 import { Container, Row, Section } from '../Scaffolding/Scaffolding.js';
-import Form from '../Form/Form.js';
+import {
+  Input,
+  Textarea,
+  FormEl,
+  FieldWrap,
+  ErrorMessage
+} from '../../components/Forms/Form.js';
 
-const FORM_CONFIG = [
-  {
-    component: 'Input',
-    label: 'Name',
-    required: true,
-    placeholder: 'Name'
-  },
-  {
-    component: 'Input',
-    label: 'Email',
-    required: true,
-    placeholder: 'Email'
-  },
-  {
-    component: 'Input',
-    label: 'Orgnaization',
-    required: false,
-    placeholder: 'Orgnaization'
-  },
-  {
-    component: 'Textarea',
-    label: 'Message',
-    required: false,
-    placeholder: 'Message'
+const SuccessMessage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: white;
+  flex-direction: column;
+
+  .success-title{
+    color: #91d491;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
   }
-];
+`;
 
-// class ContactForm extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {};
-//   }
-//
-//   update(e) {
-//     this.setState({});
-//   }
-// }
+// const ContactButton = styled.button`
+// 	background: black;
+// 	color: white;
+// 	border: 0;
+// 	padding: .3em 1.5em;
+// 	font-size: 1.1em;
+// 	display: block;
+// 	margin-right: auto;
+// 	margin-left: auto;
+// 	margin-top:1.4rem;
+//   &:focus{outline:0;}
+// 	h2{margin:0!important;}
+// 	a{color: white;text-decoration:none}
+// `;
 
-const Home = () => (
+class ContactForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: {
+        value: '',
+        touched: false,
+        dirty: false,
+        error: false,
+        errorMessage: 'Please enter a name.',
+        required: true,
+        validation: val => validator.isEmpty(val)
+      },
+      email: {
+        value: '',
+        touched: false,
+        dirty: false,
+        error: false,
+        errorMessage: 'Please enter a valid email.',
+        required: true,
+        validation: val => !validator.isEmail(val)
+      },
+      message: {
+        value: '',
+        touched: false,
+        dirty: false,
+        error: false,
+        errorMessage: 'Please enter a breif message.',
+        required: true,
+        validation: val => validator.isEmpty(val)
+      }
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+  }
+
+  handleBlur(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    let dirty, error;
+
+    if (value !== '') {
+      dirty = true;
+    }
+
+    if (this.state[name].required) {
+      error = this.state[name].validation(value);
+    }
+
+    const newState = {
+      ...this.state,
+      [name]: {
+        ...this.state[name],
+        error: error,
+        dirty: dirty,
+        touched: true
+      }
+    };
+
+    this.setState(newState);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    const newState = {
+      ...this.state,
+      [name]: {
+        ...this.state[name],
+        error: false,
+        value: value
+      }
+    };
+
+    this.setState(newState);
+  }
+
+  handleSubmit(event) {
+    const state = this.state;
+    const that = this;
+    let formIsValid = true;
+
+    for (let field in state) {
+      if ({}.hasOwnProperty.call(state, field)) {
+        if (state[field].error === true || state[field].touched === false) {
+          formIsValid = false;
+          break;
+        }
+      }
+    }
+
+    if (formIsValid) {
+      fetch('form-submit', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(state)
+      })
+        .then(function(res) {
+          return res.json();
+        })
+        .then(function(json) {
+          console.log(json.response === 'OK');
+          // debugger;
+          if (json.response === 'OK') {
+            that.setState({ success: true });
+          }
+        });
+    }
+
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <FormEl onSubmit={this.handleSubmit}>
+        <FieldWrap>
+          <Input
+            data-field-error={this.state.name.error}
+            type="text"
+            name="name"
+            value={this.state.name.value}
+            onChange={this.handleInputChange}
+            onBlur={this.handleBlur}
+            placeholder="Name"
+          />
+          {this.state.name.error &&
+            <ErrorMessage>{this.state.name.errorMessage}</ErrorMessage>}
+        </FieldWrap>
+        <FieldWrap>
+          <Input
+            data-field-error={this.state.email.error}
+            type="email"
+            name="email"
+            value={this.state.email.value}
+            onChange={this.handleInputChange}
+            onBlur={this.handleBlur}
+            placeholder="Email"
+          />
+          {this.state.email.error &&
+            <ErrorMessage>{this.state.email.errorMessage}</ErrorMessage>}
+        </FieldWrap>
+
+        <FieldWrap>
+          <Textarea
+            data-field-error={this.state.message.error}
+            placeholder="Enter Message"
+            name="message"
+            value={this.state.message.value}
+            onChange={this.handleInputChange}
+            onBlur={this.handleBlur}
+          />
+          {this.state.message.error &&
+            <ErrorMessage>{this.state.message.errorMessage}</ErrorMessage>}
+        </FieldWrap>
+
+        <Button type="submit">Submit</Button>
+
+        {this.state.success &&
+          <SuccessMessage>
+            <div className="success-title">Success!</div>
+            Thanks for reaching out! <br />
+            I will get back to you soon.
+          </SuccessMessage>}
+
+      </FormEl>
+    );
+  }
+}
+
+const Home = () =>
   <Section>
     <Row>
       <Container>
-
-        <Form formFields={FORM_CONFIG} />
-
+        <ContactForm />
       </Container>
     </Row>
     <Row />
-  </Section>
-);
+  </Section>;
 
 export default Home;
