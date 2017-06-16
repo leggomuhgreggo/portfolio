@@ -10,7 +10,7 @@ const WORK_CONFIG = [
   {
     title: 'Glocks',
     link: 'https://github.com/leggomuhgreggo/glocks',
-    summary: `A CSS Locks library, written in SASS for better fluid responsivity. Curently adapting to JS so it can work with style-components`,
+    summary: `A CSS Locks library, written in SASS for better fluid responsivity. Curently adapting to JS so it can work with styled-components`,
     img: '',
     tags: []
   },
@@ -24,7 +24,7 @@ const WORK_CONFIG = [
   {
     title: 'All That Is Interesting',
     link: 'http://all-that-is-interesting.com/',
-    summary: `Top 10k Alexa ranked website I coded`,
+    summary: `Top 10k Alexa ranked website I redesigned.`,
     img: '',
     tags: []
   },
@@ -67,7 +67,8 @@ const WORK_CONFIG = [
 
 // const Icon = () => {};
 const Summary = styled.div`
-  margin-top: .15rem;
+  margin-top: .3rem;
+  font-size: 17px;
 `;
 
 const FancyLink = styled.a`
@@ -87,9 +88,12 @@ const Small = styled.a`
 
 const Title = styled.h2`
   margin: 0;
+  font-size: 1.25rem;
+  font-family: sans-serif;
+  font-weight: 500;
 `;
 
-const WorkItem_ = ({ className, ...props }) => (
+const WorkItem_ = ({ className, ...props }) =>
   <li className={className}>
     <Title>
       <FancyLink target="_blank" rel="noopener noreferrer" href={props.link}>
@@ -100,8 +104,7 @@ const WorkItem_ = ({ className, ...props }) => (
     <Small target="_blank" rel="noopener noreferrer" href={props.link}>
       {props.link}
     </Small>
-  </li>
-);
+  </li>;
 
 const WorkItem = styled(WorkItem_)`
   &:not(:first-child){ margin-top: 1.4rem; }
@@ -110,13 +113,12 @@ const WorkItem = styled(WorkItem_)`
 // const Tag = () => {};
 // const TagWrap = () => {};
 
-const WorkList = () => (
+const WorkList = () =>
   <ul>
     {WORK_CONFIG.map((item, key) => <WorkItem key={key} {...item} />)}
-  </ul>
-);
+  </ul>;
 
-const Work = () => (
+const Work = () =>
   <Section>
     <Row>
       <Container>
@@ -126,7 +128,6 @@ const Work = () => (
       </Container>
     </Row>
     <Row />
-  </Section>
-);
+  </Section>;
 
 export default Work;
