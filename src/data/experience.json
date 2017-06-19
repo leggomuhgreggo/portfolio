@@ -15,16 +15,16 @@
 		"Majors": "Public Financial Management, Policy Analysis, and Legal Studies; Certificate in Business"
 	},
 	"skills": {
-		"Languages": ["JS/Node", "HTML/CSS", "PHP", "ColdFusion", "Bash", "Python", "Ruby"],
-		"Libraries": ["React", "Redux", "Babel", "React Router", "SASS/LESS","PostCSS","CSS in JS", "React StoryBook", "Webpack", "Gulp", "Grunt", "GraphQL", "Jest", "Mocha", "Enzyme", "jQuery", "Lodash", "D3", "GSAP", "Meteor"],
-		"Servers": ["Nginx", "Apache", "IIS", "Express", "Koa", "Hapi"],
+		"Languages": ["JS/Node", "HTML/CSS", "PHP", "ColdFusion", "Bash"],
+		"Libraries": ["Babel", "React", "Redux", "React Router", "SASS","LESS","PostCSS","CSS in JS", "Webpack", "Gulp", "GraphQL", "Jest", "Mocha", "Enzyme", "jQuery", "Lodash", "D3", "GSAP", "Meteor", "Nodemailer"],
+		"Servers": ["Nginx", "Express"],
 		"Ops": [ "Terraform", "Consul", "Docker", "EC2", "S3", "Lamda", "Digital Ocean", "Heroku"],
 		"Databases": ["Mongo", "FireBase", "SQL"],
-		"APIs": ["YouTube", "Google Maps", "Cloudinary"],
+		"APIs": ["YouTube", "Google Maps", "Cloudinary", "Mailgun"],
 		"CMSs": ["WordPress", "KeystoneJS", "Django", "Joomla", "Drupal"],
 		"Applications": ["CloudFlare","Adobe Creative Suite", "GIMP", "Microsoft Office", "Google Suite", "PostMan"],
 		"OSs": ["Linux", "Windows", "OSX"],
-		"General": ["Git", "SEO", "Design", "UX", "A11Y", "Animation", "Data Visualization", "HIPAA", "Google Analytics", "REST API"],
+		"General": ["Git", "SEO", "Graphic Design", "UX", "A11Y", "Animation", "Data Visualization", "HIPAA", "Google Analytics", "REST API"],
 		"Curated": []
 	},
 	"experience": [
