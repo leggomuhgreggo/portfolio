@@ -1,0 +1,87 @@
+{
+	"contact": {
+		"name": "Gregory H. Westneat",
+		"address": {
+			"line1": "3812 Moore St. Unit #D",
+			"line2": "Los Angeles, CA 90066"
+		},
+		"phone": "812-361-5892",
+		"email": "greg.westneat@gmail.com"
+	},
+	"eduction": {
+		"University": "Indiana University, Bloomington",
+		"School": "School for Public and Environmental Affairs",
+		"Degree": "Bachelor of Science in Public Affairs",
+		"Majors": "Public Financial Management, Policy Analysis, and Legal Studies; Certificate in Business"
+	},
+	"skills": {
+		"Languages": ["JS/Node", "HTML/CSS", "PHP", "ColdFusion", "Bash", "Python", "Ruby"],
+		"Libraries": ["React", "Redux", "Babel", "React Router", "SASS/LESS","PostCSS","CSS in JS", "React StoryBook", "Webpack", "Gulp", "Grunt", "GraphQL", "Jest", "Mocha", "Enzyme", "jQuery", "Lodash", "D3", "GSAP", "Meteor"],
+		"Servers": ["Nginx", "Apache", "IIS", "Express", "Koa", "Hapi"],
+		"Ops": [ "Terraform", "Consul", "Docker", "EC2", "S3", "Lamda", "Digital Ocean", "Heroku"],
+		"Databases": ["Mongo", "FireBase", "SQL"],
+		"APIs": ["YouTube", "Google Maps", "Cloudinary"],
+		"CMSs": ["WordPress", "KeystoneJS", "Django", "Joomla", "Drupal"],
+		"Applications": ["CloudFlare","Adobe Creative Suite", "GIMP", "Microsoft Office", "Google Suite", "PostMan"],
+		"OSs": ["Linux", "Windows", "OSX"],
+		"General": ["Git", "SEO", "Design", "UX", "A11Y", "Animation", "Data Visualization", "HIPAA", "Google Analytics", "REST API"],
+		"Curated": []
+	},
+	"experience": [
+		{
+			"organization": "SongWrite",
+			"position": "Co-Creator",
+			"location": "Los Angeles, CA",
+			"dates": "July 2014 - Current",
+			"accomplishments": [
+				"Co-developed reactive SPA to manage music development projects in a Meteor stack",
+				"Gained advanced, and intuitive UX sensibilities, as primary designer for the app"
+			]
+		},
+		{
+			"organization": "Foster Web Marketing",
+			"position": "Senior Developer",
+			"location": "Fairfax, VA",
+			"dates": "July 2012 - Current",
+			"accomplishments": [
+				"Developed features and integrated APIs for admin interface",
+				"Wrote entire front-end framework to be modular, fully responsive, and get a perfect score on Google Page Speed Insights",
+				"Led efforts to resolve (and forewarned) a massive DDoS attack, interfacing with 300 clients to migrate DNS to CloudFlare",
+				"Communicated technical matters comprehensibly to colleagues and clients, as primary technical liason for the company",
+				"Automated repetative tasks, including site builds, in Webpack and Gulp"
+			]
+		},
+		{
+			"organization": "Freelance Developer",
+			"position": "El Duderino",
+			"dates": "Nov 2010 - Current",
+			"accomplishments": [
+				"Implemented redesigns for several sites ranked top 10K globally by Alexa Site Rankings",
+				"Developed business administration and client relations skills",
+				"Developed proficiencies with variety of tech stacks"
+			]
+		},
+		{
+			"organization": "UITS",
+			"position": "Support Consultant",
+			"location": "Bloomington, IN",
+			"dates": "May 2008 - May 2010",
+			"accomplishments": [
+				"Provided technical and troubleshooting support for Indiana University central systems, all major operating systems, mobile devices, and networking issues",
+				"Developed strong communication skills and attained 100% satisfaction in client feedback surveys",
+				"Gained expertise in quickly researching and applying solutions to technical problems"
+			]
+		}
+	],
+	"volunteer":[
+		"Participated in a community-based residential retrofitting project in New Orleans",
+		"Worked on a wetlands rehabilitation project in New Orleans",
+		"Developed a community garden in the Lower Ninth Ward",
+		"Organized an absentee ballot registration drive for residents of Virginia away at college",
+		"Campaigned for local gubernatorial and congressional candidates"
+	],
+	"awards": [
+		"Congressional Service Award – received $4725 education award in 2007 for service",
+		"AP Student Award – recognition for Advanced Placement performance"
+	]
+}
