@@ -6,7 +6,7 @@
 			"line2": "Los Angeles, CA 90066"
 		},
 		"phone": "812-361-5892",
-		"email": "greg.westneat@gmail.com"
+		"email": "gwestneat@gmail.com"
 	},
 	"eduction": {
 		"University": "Indiana University, Bloomington",
@@ -18,11 +18,11 @@
 		"Languages": ["JS/Node", "HTML/CSS", "PHP", "ColdFusion", "Bash"],
 		"Libraries": ["Babel", "React", "Redux", "React Router", "SASS","LESS","PostCSS","CSS in JS", "Webpack", "Gulp", "GraphQL", "Jest", "Mocha", "Enzyme", "jQuery", "Lodash", "D3", "GSAP", "Meteor", "Nodemailer"],
 		"Servers": ["Nginx", "Express"],
-		"Ops": [ "Terraform", "Consul", "Docker", "EC2", "S3", "Lamda", "Digital Ocean", "Heroku"],
+		"Ops": [ "Docker", "EC2", "S3", "Digital Ocean", "Heroku"],
 		"Databases": ["Mongo", "FireBase", "SQL"],
 		"APIs": ["YouTube", "Google Maps", "Cloudinary", "Mailgun"],
-		"CMSs": ["WordPress", "KeystoneJS", "Django", "Joomla", "Drupal"],
-		"Applications": ["CloudFlare","Adobe Creative Suite", "GIMP", "Microsoft Office", "Google Suite", "PostMan"],
+		"CMSs": ["WordPress", "KeystoneJS", "Django"],
+		"Applications": ["CloudFlare","Adobe Creative Suite"],
 		"OSs": ["Linux", "Windows", "OSX"],
 		"General": ["Git", "SEO", "Graphic Design", "UX", "A11Y", "Animation", "Data Visualization", "HIPAA", "Google Analytics", "REST API"],
 		"Curated": []
@@ -72,16 +72,5 @@
 				"Gained expertise in quickly researching and applying solutions to technical problems"
 			]
 		}
-	],
-	"volunteer":[
-		"Participated in a community-based residential retrofitting project in New Orleans",
-		"Worked on a wetlands rehabilitation project in New Orleans",
-		"Developed a community garden in the Lower Ninth Ward",
-		"Organized an absentee ballot registration drive for residents of Virginia away at college",
-		"Campaigned for local gubernatorial and congressional candidates"
-	],
-	"awards": [
-		"Congressional Service Award – received $4725 education award in 2007 for service",
-		"AP Student Award – recognition for Advanced Placement performance"
 	]
 }

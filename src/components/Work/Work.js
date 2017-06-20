@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
+
 import { Container, Row, Section } from '../Scaffolding/Scaffolding.js';
 
 // 'work-group':{
@@ -120,6 +122,14 @@ const WorkList = () =>
 
 const Work = () =>
   <Section>
+
+    <Helmet>
+      <title>Work</title>
+      <meta
+        name="description"
+        content="A curated list of current and former projects I've worked on."
+      />
+    </Helmet>
     <Row>
       <Container>
 

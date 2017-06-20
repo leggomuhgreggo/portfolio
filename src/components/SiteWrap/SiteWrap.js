@@ -1,8 +1,10 @@
 // import React from 'react';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
+import bgimg from '../../simple_dashed.png';
 
 const SiteWrap = styled.div`
 	background: #141516;
+	background-image: url(${bgimg});
 	color: white;
 	min-height: 100vh;
 	width: 100%;

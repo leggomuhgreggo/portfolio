@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import { Container, Row, Section } from '../Scaffolding/Scaffolding.js';
 import Button from '../Button/Button.js';
 
-const Title_ = props => (
+const Title_ = props =>
   <div {...props}>
     <h1 className="greeting">Hello</h1>
     <div className="tagline">
@@ -16,8 +17,7 @@ const Title_ = props => (
       {' '}
       with code.
     </div>
-  </div>
-);
+  </div>;
 
 const Title = styled(Title_)`
 
@@ -46,8 +46,17 @@ const Title = styled(Title_)`
   }
 `;
 
-const Home = () => (
+const Home = () =>
   <Section>
+
+    <Helmet>
+      <title>Home</title>
+      <meta
+        name="description"
+        content="This is the professional website for Greg Westneat. You can find information about projects I've worked on and get in touch."
+      />
+    </Helmet>
+
     <Row>
       <Container>
         <Title />
@@ -58,7 +67,6 @@ const Home = () => (
         <Button><Link to="/about">Get in touch</Link></Button>
       </Container>
     </Row>
-  </Section>
-);
+  </Section>;
 
 export default Home;

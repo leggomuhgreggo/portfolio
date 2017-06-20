@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { injectGlobal } from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import ResumeHeader from './ResumeHeader/ResumeHeader.js';
 import SkillsList from './SkillsList/SkillsList.js';
@@ -31,6 +32,10 @@ const ResumeWrap = styled.div`
 
 const Resume = () =>
   <ResumeWrap>
+    <Helmet>
+      <title>Greg's Resume</title>
+      <meta name="description" content="A resume I whipped up in react" />
+    </Helmet>
     <ResumeHeader contact={RESUME_DATA.contact} />
 
     <ResumeSection title="Technical Skills">
@@ -43,7 +48,6 @@ const Resume = () =>
 
     <ResumeSection title="Education" />
 
-    <ResumeSection title="Volunteer Experience" />
   </ResumeWrap>;
 
 export default Resume;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import validator from 'validator';
+import { Helmet } from 'react-helmet';
 
 import Button from '../Button/Button.js';
 import { Container, Row, Section } from '../Scaffolding/Scaffolding.js';
@@ -227,8 +228,16 @@ class ContactForm extends React.Component {
   }
 }
 
-const Home = () =>
+const About = () =>
   <Section>
+
+    <Helmet>
+      <title>About</title>
+      <meta
+        name="description"
+        content="A little background on me and a form by which to contact me"
+      />
+    </Helmet>
     <Row>
       <Container>
         <ContactForm />
@@ -237,4 +246,4 @@ const Home = () =>
     <Row />
   </Section>;
 
-export default Home;
+export default About;
