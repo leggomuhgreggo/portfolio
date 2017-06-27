@@ -30,12 +30,12 @@
 	"experience": [
 		{
 			"organization": "SongWrite",
-			"position": "Co-Creator",
+			"position": "Co-Creator / UX Designer",
 			"location": "Los Angeles, CA",
 			"dates": "July 2014 - Current",
 			"accomplishments": [
-				"Co-developed reactive SPA to manage music development projects in a Meteor stack",
-				"Gained advanced, and intuitive UX sensibilities, as primary designer for the app"
+				"Co-developed reactive SPA to manage music development projects, using a Meteor stack",
+				"Established UX design as the first stage of all web and mobile application developments, instituting a user-centered design approach."
 			]
 		},
 		{
@@ -44,11 +44,11 @@
 			"location": "Fairfax, VA",
 			"dates": "July 2012 - Current",
 			"accomplishments": [
-				"Developed features and integrated APIs for admin interface",
+				"Developed features and integrated APIs for admin interface to support over 300 client sites",
 				"Wrote entire front-end framework to be modular, fully responsive, and get a perfect score on Google Page Speed Insights",
-				"Led efforts to resolve (and forewarned) a massive DDoS attack, interfacing with 300 clients to migrate DNS to CloudFlare",
+				"Used Webpack and Gulp to automate repetative tasks to increase developer productivity and ergonomics",
 				"Communicated technical matters comprehensibly to colleagues and clients, as primary technical liason for the company",
-				"Automated repetative tasks, including site builds, in Webpack and Gulp"
+				"Used networking and client relations skills to lead efforts to resolve massive DDoS attack, interfacing with clients and writing API integrations to migrate DNS to CloudFlare"
 			]
 		},
 		{
@@ -56,14 +56,13 @@
 			"position": "El Duderino",
 			"dates": "Nov 2010 - Current",
 			"accomplishments": [
-				"Implemented redesigns for several sites ranked top 10K globally by Alexa Site Rankings",
-				"Developed business administration and client relations skills",
-				"Developed proficiencies with variety of tech stacks"
+				"Implemented redesigns for several sites ranked top 10K globally by Alexa Site Rankings, using A/B testing to optimize engagement-based ROI strategy",
+				"Leveraged business administration and client relations skills to manage mutlitple similtaneous projects, adapting to a variety of client workflows and tech stacks"
 			]
 		},
 		{
 			"organization": "UITS",
-			"position": "Support Consultant",
+			"position": "IT Support Consultant",
 			"location": "Bloomington, IN",
 			"dates": "May 2008 - May 2010",
 			"accomplishments": [

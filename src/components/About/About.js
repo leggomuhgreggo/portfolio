@@ -24,11 +24,10 @@ const SuccessMessage = styled.div`
   width: 100%;
   height: 100%;
   text-align: center;
-  background: white;
   flex-direction: column;
 
   .success-title{
-    color: #91d491;
+    color: #FFF;
     font-size: 1.3rem;
     margin-bottom: 10px;
   }
