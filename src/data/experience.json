@@ -16,7 +16,7 @@
 	},
 	"skills": {
 		"Languages": ["JS/Node", "HTML/CSS", "PHP", "ColdFusion", "Bash"],
-		"Libraries": ["Babel", "React", "Redux", "React Router", "SASS","LESS","PostCSS","CSS in JS", "Webpack", "Gulp", "GraphQL", "Jest", "Mocha", "Enzyme", "jQuery", "Lodash", "D3", "GSAP", "Meteor", "Nodemailer"],
+		"Libraries": ["Babel", "React", "Redux", "React Router", "SASS","LESS","PostCSS","CSS in JS", "Bootsrap", "Webpack", "Gulp", "GraphQL", "Jest", "Mocha", "Enzyme", "jQuery", "Lodash", "D3", "GSAP", "Meteor", "Nodemailer"],
 		"Servers": ["Nginx", "Express"],
 		"Ops": [ "Docker", "EC2", "S3", "Digital Ocean", "Heroku"],
 		"Databases": ["Mongo", "FireBase", "SQL"],
