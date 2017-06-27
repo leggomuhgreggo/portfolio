@@ -1,5 +1,4 @@
-// import React from 'react';
-import styled, { injectGlobal } from 'styled-components';
+import styled from 'styled-components';
 import bgimg from '../../simple_dashed.png';
 
 const SiteWrap = styled.div`

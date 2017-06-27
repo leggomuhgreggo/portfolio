@@ -6,9 +6,11 @@ import ResumeHeader from './ResumeHeader/ResumeHeader.js';
 import SkillsList from './SkillsList/SkillsList.js';
 import ResumeSection from './ResumeSection/ResumeSection.js';
 import ExpereinceList from './WorkHistoryItem/WorkHistoryItem.js';
+import Education from './Education/Education.js';
 
 import RESUME_DATA from '../../data/experience.json';
 
+// eslint-disable-next-line
 injectGlobal`
   body, html {
     background: white;
@@ -46,7 +48,9 @@ const Resume = () =>
       <ExpereinceList items={RESUME_DATA.experience} />
     </ResumeSection>
 
-    <ResumeSection title="Education" />
+    <ResumeSection title="Education">
+      <Education {...RESUME_DATA.education} />
+    </ResumeSection>
 
   </ResumeWrap>;
 

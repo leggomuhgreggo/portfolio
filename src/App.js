@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-import styled, { injectGlobal } from 'styled-components';
-
-import bgimg from './simple_dashed.png';
+import styled from 'styled-components';
 
 import Nav from './components/Nav/Nav.js';
 import SiteWrap from './components/SiteWrap/SiteWrap.js';
@@ -20,17 +18,10 @@ const Main = styled.main`
   padding: 3rem 0 3rem;
 `;
 
-injectGlobal`
-  body, html {
-    background-image: url(${bgimg});
-  }
-`;
-
 class App extends Component {
   render() {
     return (
       <Router>
-
         <Route
           render={({ location }) =>
             <Switch location={location} key={location.key}>

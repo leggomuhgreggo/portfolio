@@ -8,11 +8,11 @@
 		"phone": "812-361-5892",
 		"email": "gwestneat@gmail.com"
 	},
-	"eduction": {
-		"University": "Indiana University, Bloomington",
-		"School": "School for Public and Environmental Affairs",
-		"Degree": "Bachelor of Science in Public Affairs",
-		"Majors": "Public Financial Management, Policy Analysis, and Legal Studies; Certificate in Business"
+	"education": {
+		"university": "Indiana University, Bloomington",
+		"school": "School for Public and Environmental Affairs",
+		"degree": "Bachelor of Science in Public Affairs",
+		"majors": "Public Financial Management, Policy Analysis, and Legal Studies; Certificate in Business"
 	},
 	"skills": {
 		"Languages": ["JS/Node", "HTML/CSS", "PHP", "ColdFusion", "Bash"],
@@ -69,7 +69,7 @@
 			"accomplishments": [
 				"Provided technical and troubleshooting support for Indiana University central systems, all major operating systems, mobile devices, and networking issues",
 				"Developed strong communication skills and attained 100% satisfaction in client feedback surveys",
-				"Gained expertise in quickly researching and applying solutions to technical problems"
+				"Quickly researched and applied solutions to wide array of technical problems"
 			]
 		}
 	]
