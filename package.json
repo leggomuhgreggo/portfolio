@@ -27,6 +27,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start-email": "node ./server/mail/server.js",
+    "start:server": "build && node ./server/index.js",
     "start": "npm-run-all -p watch-css start-js start-email",
     "build": "npm run build-css && react-scripts build && react-snapshot",
     "test": "react-scripts test --env=jsdom",
