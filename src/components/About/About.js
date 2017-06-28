@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import validator from 'validator';
 import { Helmet } from 'react-helmet';
+import axios from 'axios';
 
 import Button from '../Button/Button.js';
 import { Container, Row, Section } from '../Scaffolding/Scaffolding.js';
@@ -12,6 +13,8 @@ import {
   FieldWrap,
   ErrorMessage
 } from '../../components/Forms/Form.js';
+
+const FormWrap = styled.div`position: relative;`;
 
 const SuccessMessage = styled.div`
   position: absolute;
@@ -136,35 +139,37 @@ class ContactForm extends React.Component {
     const state = this.state;
     const that = this;
     let formIsValid = true;
+    let formObj = {};
 
     for (let field in state) {
       if ({}.hasOwnProperty.call(state, field)) {
         if (state[field].error === true || state[field].touched === false) {
-          formIsValid = false;
-          break;
+          state[field].error = true;
+
+          if (formIsValid) {
+            formIsValid = false;
+          }
+        } else {
+          formObj[field] = state[field].value;
         }
       }
     }
 
     if (formIsValid) {
-      fetch('form-submit', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(state)
-      })
-        .then(function(res) {
-          return res.json();
-        })
-        .then(function(json) {
-          console.log(json.response === 'OK');
-          // debugger;
-          if (json.response === 'OK') {
-            that.setState({ success: true });
-          }
-        });
+      // const formJSON = {
+      //   state.
+      // }
+      console.log(formObj);
+      axios({
+        method: 'post',
+        url: 'https://6j3acfz0cl.execute-api.us-west-2.amazonaws.com/prod',
+        data: formObj
+      }).then(function(res) {
+        console.log('res', res);
+        if (res.data.response === 'OK') {
+          that.setState({ success: true });
+        }
+      });
     }
 
     event.preventDefault();
@@ -172,57 +177,58 @@ class ContactForm extends React.Component {
 
   render() {
     return (
-      <FormEl onSubmit={this.handleSubmit}>
-        <FieldWrap>
-          <Input
-            data-field-error={this.state.name.error}
-            type="text"
-            name="name"
-            value={this.state.name.value}
-            onChange={this.handleInputChange}
-            onBlur={this.handleBlur}
-            placeholder="Name"
-          />
-          {this.state.name.error &&
-            <ErrorMessage>{this.state.name.errorMessage}</ErrorMessage>}
-        </FieldWrap>
-        <FieldWrap>
-          <Input
-            data-field-error={this.state.email.error}
-            type="email"
-            name="email"
-            value={this.state.email.value}
-            onChange={this.handleInputChange}
-            onBlur={this.handleBlur}
-            placeholder="Email"
-          />
-          {this.state.email.error &&
-            <ErrorMessage>{this.state.email.errorMessage}</ErrorMessage>}
-        </FieldWrap>
+      <FormWrap>
+        <FormEl success={this.state.success} onSubmit={this.handleSubmit}>
+          <FieldWrap>
+            <Input
+              data-field-error={this.state.name.error}
+              type="text"
+              name="name"
+              value={this.state.name.value}
+              onChange={this.handleInputChange}
+              onBlur={this.handleBlur}
+              placeholder="Name"
+            />
+            {this.state.name.error &&
+              <ErrorMessage>{this.state.name.errorMessage}</ErrorMessage>}
+          </FieldWrap>
+          <FieldWrap>
+            <Input
+              data-field-error={this.state.email.error}
+              type="email"
+              name="email"
+              value={this.state.email.value}
+              onChange={this.handleInputChange}
+              onBlur={this.handleBlur}
+              placeholder="Email"
+            />
+            {this.state.email.error &&
+              <ErrorMessage>{this.state.email.errorMessage}</ErrorMessage>}
+          </FieldWrap>
 
-        <FieldWrap>
-          <Textarea
-            data-field-error={this.state.message.error}
-            placeholder="Enter Message"
-            name="message"
-            value={this.state.message.value}
-            onChange={this.handleInputChange}
-            onBlur={this.handleBlur}
-          />
-          {this.state.message.error &&
-            <ErrorMessage>{this.state.message.errorMessage}</ErrorMessage>}
-        </FieldWrap>
+          <FieldWrap>
+            <Textarea
+              data-field-error={this.state.message.error}
+              placeholder="Enter Message"
+              name="message"
+              value={this.state.message.value}
+              onChange={this.handleInputChange}
+              onBlur={this.handleBlur}
+            />
+            {this.state.message.error &&
+              <ErrorMessage>{this.state.message.errorMessage}</ErrorMessage>}
+          </FieldWrap>
 
-        <Button type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
 
+        </FormEl>
         {this.state.success &&
           <SuccessMessage>
             <div className="success-title">Success!</div>
             Thanks for reaching out! <br />
             I will get back to you soon.
           </SuccessMessage>}
-
-      </FormEl>
+      </FormWrap>
     );
   }
 }

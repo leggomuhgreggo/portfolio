@@ -5,6 +5,7 @@ const errorColor = '#ec7a76';
 
 const FormEl = styled.form`
   position: relative;
+  visibility: ${props => (props.success ? 'hidden' : 'visible')} 
 `;
 
 const FieldWrap = styled.div`

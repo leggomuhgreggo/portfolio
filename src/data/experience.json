@@ -34,8 +34,8 @@
 			"location": "Los Angeles, CA",
 			"dates": "July 2014 - Current",
 			"accomplishments": [
-				"Co-developed reactive SPA to manage music development projects, using a Meteor stack",
-				"Established UX design as the first stage of all web and mobile application developments, instituting a user-centered design approach."
+				"Co-developed reactive SPA to manage music development projects in a MeteorJS",
+				"Established UX design as the first stage of all web and mobile application developments, instituting a user-centered design approach"
 			]
 		},
 		{
@@ -44,7 +44,7 @@
 			"location": "Fairfax, VA",
 			"dates": "July 2012 - Current",
 			"accomplishments": [
-				"Developed features and integrated APIs for admin interface to support over 300 client sites",
+				"Developed features and integrated APIs for admin interface to support over 300 client websites",
 				"Wrote entire front-end framework to be modular, fully responsive, and get a perfect score on Google Page Speed Insights",
 				"Used Webpack and Gulp to automate repetative tasks to increase developer productivity and ergonomics",
 				"Communicated technical matters comprehensibly to colleagues and clients, as primary technical liason for the company",
