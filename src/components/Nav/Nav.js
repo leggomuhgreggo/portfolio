@@ -19,7 +19,7 @@ const NavList = () => (
   <ul className="nav-list">
     <NavItem to="/" label="Home" />
     <NavItem to="/work" label="Work" />
-    <NavItem to="/about" label="About" />
+    <NavItem to="/contact" label="Contact" />
     <li>
       <a
         target="_blank"

@@ -64,7 +64,7 @@ const Home = () =>
     </Row>
     <Row>
       <Container>
-        <Button><Link to="/about">Get in touch</Link></Button>
+        <Button><Link to="/contact">Get in touch</Link></Button>
       </Container>
     </Row>
   </Section>;

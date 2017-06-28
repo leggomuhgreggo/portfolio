@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Nav from './components/Nav/Nav.js';
 import SiteWrap from './components/SiteWrap/SiteWrap.js';
 import Home from './components/Home/Home.js';
-import About from './components/About/About.js';
+import Contact from './components/Contact/Contact.js';
 import Work from './components/Work/Work.js';
 import Resume from './components/Resume/Resume.js';
 
@@ -37,7 +37,7 @@ class App extends Component {
                 >
                   <Switch location={location} key={location.key}>
                     <Route exact path="/" component={Home} />
-                    <Route path="/about" component={About} />
+                    <Route path="/contact" component={Contact} />
                     <Route path="/work" component={Work} />
                   </Switch>
                 </CSSTransitionGroup>

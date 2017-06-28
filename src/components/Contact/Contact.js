@@ -233,11 +233,11 @@ class ContactForm extends React.Component {
   }
 }
 
-const About = () =>
+const Contact = () =>
   <Section>
 
     <Helmet>
-      <title>About</title>
+      <title>Contact</title>
       <meta
         name="description"
         content="A little background on me and a form by which to contact me"
@@ -251,4 +251,4 @@ const About = () =>
     <Row />
   </Section>;
 
-export default About;
+export default Contact;
