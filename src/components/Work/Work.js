@@ -18,7 +18,6 @@ const WORK_CONFIG = [
   },
   {
     title: 'Songwrite',
-    link: 'http://dev.songwrite.io',
     summary: `Project management suite for music development written in a Meteor JS stack`,
     img: '',
     tags: []

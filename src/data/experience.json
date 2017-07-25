@@ -1,75 +1,107 @@
 {
-	"contact": {
-		"name": "Gregory H. Westneat",
-		"address": {
-			"line1": "3812 Moore St. Unit #D",
-			"line2": "Los Angeles, CA 90066"
-		},
-		"phone": "812-361-5892",
-		"email": "gwestneat@gmail.com"
-	},
-	"education": {
-		"university": "Indiana University, Bloomington",
-		"school": "School for Public and Environmental Affairs",
-		"degree": "Bachelor of Science in Public Affairs",
-		"majors": "Public Financial Management, Policy Analysis, and Legal Studies; Certificate in Business"
-	},
-	"skills": {
-		"Languages": ["JS/Node", "HTML/CSS", "PHP", "ColdFusion", "Bash"],
-		"Libraries": ["Babel", "React", "Redux", "React Router", "SASS","LESS","PostCSS","CSS in JS", "Bootsrap", "Webpack", "Gulp", "GraphQL", "Jest", "Mocha", "Enzyme", "jQuery", "Lodash", "D3", "GSAP", "Meteor", "Nodemailer"],
-		"Servers": ["Nginx", "Express"],
-		"Ops": [ "Docker", "EC2", "S3", "Digital Ocean", "Heroku"],
-		"Databases": ["Mongo", "FireBase", "SQL"],
-		"APIs": ["YouTube", "Google Maps", "Cloudinary", "Mailgun"],
-		"CMSs": ["WordPress", "KeystoneJS", "Django"],
-		"Applications": ["CloudFlare","Adobe Creative Suite"],
-		"OSs": ["Linux", "Windows", "OSX"],
-		"General": ["Git", "SEO", "Graphic Design", "UX", "A11Y", "Animation", "Data Visualization", "HIPAA", "Google Analytics", "REST API"],
-		"Curated": []
-	},
-	"experience": [
-		{
-			"organization": "SongWrite",
-			"position": "Co-Creator / UX Designer",
-			"location": "Los Angeles, CA",
-			"dates": "July 2014 - Current",
-			"accomplishments": [
-				"Co-developed reactive SPA to manage music development projects in a MeteorJS",
-				"Established UX design as the first stage of all web and mobile application developments, instituting a user-centered design approach"
-			]
-		},
-		{
-			"organization": "Foster Web Marketing",
-			"position": "Senior Developer",
-			"location": "Fairfax, VA",
-			"dates": "July 2012 - Current",
-			"accomplishments": [
-				"Developed features and integrated APIs for admin interface to support over 300 client websites",
-				"Wrote entire front-end framework to be modular, fully responsive, and get a perfect score on Google Page Speed Insights",
-				"Used Webpack and Gulp to automate repetative tasks to increase developer productivity and ergonomics",
-				"Communicated technical matters comprehensibly to colleagues and clients, as primary technical liason for the company",
-				"Used networking and client relations skills to lead efforts to resolve massive DDoS attack, interfacing with clients and writing API integrations to migrate DNS to CloudFlare"
-			]
-		},
-		{
-			"organization": "Freelance Developer",
-			"position": "El Duderino",
-			"dates": "Nov 2010 - Current",
-			"accomplishments": [
-				"Implemented redesigns for several sites ranked top 10K globally by Alexa Site Rankings, using A/B testing to optimize engagement-based ROI strategy",
-				"Leveraged business administration and client relations skills to manage mutlitple similtaneous projects, adapting to a variety of client workflows and tech stacks"
-			]
-		},
-		{
-			"organization": "UITS",
-			"position": "IT Support Consultant",
-			"location": "Bloomington, IN",
-			"dates": "May 2008 - May 2010",
-			"accomplishments": [
-				"Provided technical and troubleshooting support for Indiana University central systems, all major operating systems, mobile devices, and networking issues",
-				"Developed strong communication skills and attained 100% satisfaction in client feedback surveys",
-				"Quickly researched and applied solutions to wide array of technical problems"
-			]
-		}
-	]
+  "contact": {
+    "name": "Gregory H. Westneat",
+    "address": {
+      "line1": "3812 Moore St. Unit #D",
+      "line2": "Los Angeles, CA 90066"
+    },
+    "phone": "812-361-5892",
+    "email": "gwestneat@gmail.com"
+  },
+  "education": {
+    "university": "Indiana University, Bloomington",
+    "school": "School for Public and Environmental Affairs",
+    "degree": "Bachelor of Science in Public Affairs",
+    "majors": "Public Financial Management, Policy Analysis, and Legal Studies; Certificate in Business"
+  },
+  "skills": {
+    "Languages": ["JS/Node", "HTML/CSS", "Python", "PHP", "ColdFusion", "Bash"],
+    "Libraries": [
+      "React",
+      "Redux",
+      "React Native",
+      "Ember",
+      "Webpack",
+      "Gulp",
+      "SASS/LESS",
+      "PostCSS",
+      "CSS in JS",
+      "GraphQL",
+      "Jest",
+      "Mocha",
+      "Enzyme",
+      "jQuery",
+      "Lodash",
+      "D3",
+      "GSAP",
+      "Meteor",
+      "Nodemailer"
+    ],
+    "Servers": ["Nginx", "Express"],
+    "Ops": ["Docker", "Lambda", "EC2", "S3", "Digital Ocean", "Heroku"],
+    "Databases": ["PostgreSQL", "Mongo", "FireBase"],
+    "APIs": ["YouTube", "Google Maps", "Cloudinary", "Mailgun"],
+    "CMSs": ["WordPress", "KeystoneJS", "Django"],
+    "Applications": ["CloudFlare", "Adobe Creative Suite", "Google Analytics"],
+    "OSs": ["Linux", "Windows", "OSX"],
+    "General": [
+      "Git",
+      "SEO",
+      "Graphic Design",
+      "UX",
+      "A11Y",
+      "Animation",
+      "Data Visualization",
+      "HIPAA",
+      "REST",
+      "Networking",
+      "Flux Data Architecture",
+      "FP/OOP"
+    ]
+  },
+  "experience": [
+    {
+      "organization": "SongWrite",
+      "position": "Co-Creator / UX Designer",
+      "location": "Los Angeles, CA",
+      "dates": "July 2014 - Current",
+      "accomplishments": [
+        "Co-developed reactive SPA to manage music development projects in a MeteorJS",
+        "Established UX design as the first stage of all web and mobile application developments, instituting a user-centered design approach"
+      ]
+    },
+    {
+      "organization": "Foster Web Marketing",
+      "position": "Senior Developer",
+      "location": "Fairfax, VA",
+      "dates": "July 2012 - Current",
+      "accomplishments": [
+        "Developed features and integrated APIs for admin interface to support over 300 client websites",
+        "Wrote entire front-end framework to be modular, fully responsive, and get a perfect score on Google Page Speed Insights",
+        "Used Webpack and Gulp to automate repetitive tasks to increase developer productivity and ergonomics",
+        "Communicated technical matters comprehensibly to colleagues and clients, as primary technical liaison for the company",
+        "Used networking and client relations skills to lead efforts to resolve massive DDoS attack, interfacing with clients and writing API integrations to migrate DNS to CloudFlare"
+      ]
+    },
+    {
+      "organization": "Freelance Developer",
+      "position": "El Duderino",
+      "dates": "Nov 2010 - Current",
+      "accomplishments": [
+        "Implemented redesigns for several sites ranked top 10K globally by Alexa Site Rankings, using A/B testing to optimize engagement-based ROI strategy",
+        "Leveraged business administration and client relations skills to manage multiple simultaneous projects, adapting to a variety of client workflows and tech stacks"
+      ]
+    },
+    {
+      "organization": "UITS",
+      "position": "IT Support Consultant",
+      "location": "Bloomington, IN",
+      "dates": "May 2008 - May 2010",
+      "accomplishments": [
+        "Provided technical and troubleshooting support for Indiana University central systems, all major operating systems, mobile devices, and networking issues",
+        "Developed strong communication skills and attained 100% satisfaction in client feedback surveys",
+        "Quickly researched and applied solutions to wide array of technical problems"
+      ]
+    }
+  ]
 }
