@@ -67,7 +67,8 @@
       "dates": "July 2014 - Current",
       "accomplishments": [
         "Co-developed reactive SPA to manage music development projects in a MeteorJS",
-        "Established UX design as the first stage of all web and mobile application developments, instituting a user-centered design approach"
+        "Established UX design as the first stage of all web and mobile application developments, instituting a user-centered design approach",
+        "Leveraged Meteor’s pub/sub data API to power cross-client reactivity for data-driven app components"
       ]
     },
     {
@@ -78,9 +79,9 @@
       "accomplishments": [
         "Developed features and integrated APIs for admin interface to support over 300 client websites",
         "Wrote entire front-end framework to be modular, fully responsive, and get a perfect score on Google Page Speed Insights",
-        "Used Webpack and Gulp to automate repetitive tasks to increase developer productivity and ergonomics",
+        "Increased developer productivity/ergonomics with custom Webpack and Gulp scripts, automating repetitive tasks and reducing boilerplate",
         "Communicated technical matters comprehensibly to colleagues and clients, as primary technical liaison for the company",
-        "Used networking and client relations skills to lead efforts to resolve massive DDoS attack, interfacing with clients and writing API integrations to migrate DNS to CloudFlare"
+        "Lead efforts to resolve massive DDoS attack, interfacing with clients and writing API integrations to migrate clients’ DNS to CloudFlare"
       ]
     },
     {
@@ -101,6 +102,14 @@
         "Provided technical and troubleshooting support for Indiana University central systems, all major operating systems, mobile devices, and networking issues",
         "Developed strong communication skills and attained 100% satisfaction in client feedback surveys",
         "Quickly researched and applied solutions to wide array of technical problems"
+      ]
+    },
+    {
+      "organization": "Personal Code Projects",
+      "accomplishments": [
+        "Slick: Top 100 GitHub carousel repo, for which I am the primary maintainer",
+        "Glocks: Highly flexible CSS Locks mixin for fluid sizing, written in SCSS",
+        "American Ipsum: American-themed filler text generator, for fun"
       ]
     }
   ]
